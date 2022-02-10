@@ -1,0 +1,72 @@
+name: Even Number of 0s and 1s (Option 1)
+source code: |-
+  # Even Number of 0s and 1s
+  # Upon seeing a 0 or 1 we then go and seek its 'match'
+
+  input: '00001111' # try '010110'
+  #input: '010110'
+  #input: '111000'
+  blank: ' '
+  start state: seekStart
+  table:
+    seek1:
+      '0': {R: seek0}
+      '1': {write: 'X', R: seek0}
+      'X': {L: seek1}
+      ' ': {L: seekStart}
+    seek0:
+      '0': {write: 'X', R: seek1}
+      '1': {R: seek1}
+      'X': {R: seekStart}
+      ' ': {R: seek1}
+    seekStart:
+      '0': {write: 'X', R: seek0}
+      '1': {write: 'X', R: seek1}
+      'X': {L: seekStart}
+      ' ': {L: check}
+    check:
+      '0': {L: fail}
+      '1': {L: fail}
+      'X': {L: check}
+      ' ': {L: accept}
+    fail:
+    accept:
+positions:
+  seek1: {x: 324.93, y: 376.08}
+  seek0: {x: 268.07, y: 71.05}
+  seekStart: {x: 583.27, y: 35.63}
+  check: {x: 528.61, y: 452.31}
+  fail: {x: 713.86, y: 448.13}
+  accept: {x: 152.03, y: 448.85}
+editor contents: |-
+  # Even same of 0s and 1s
+  # Upon seeing a 0 or 1 we then go and seek its 'match'
+
+  input: '00001111' # try '010110'
+  #input: '010110'
+  #input: '111000'
+  blank: ' '
+  start state: seekStart
+  table:
+    seek1:
+      '0': {R: seek0}
+      '1': {write: 'X', R: seek0}
+      'X': {L: seek1}
+      ' ': {L: seekStart}
+    seek0:
+      '0': {write: 'X', R: seek1}
+      '1': {R: seek1}
+      'X': {R: seekStart}
+      ' ': {R: seek1}
+    seekStart:
+      '0': {write: 'X', R: seek0}
+      '1': {write: 'X', R: seek1}
+      'X': {L: seekStart}
+      ' ': {L: check}
+    check:
+      '0': {L: fail}
+      '1': {L: fail}
+      'X': {L: check}
+      ' ': {L: accept}
+    fail:
+    accept:
